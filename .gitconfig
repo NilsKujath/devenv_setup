@@ -11,4 +11,5 @@
 	cm = commit -m
 	cam = commit -a -m
 	pom = push origin master
-	l = log --decorate --all --oneline --graph
+    l = log --decorate --all --oneline --graph
+    s = status
