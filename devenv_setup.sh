@@ -34,7 +34,15 @@ then
     rm -r /usr/local/*
     echo "Homebrew is not installed. Initiating installation:"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo "... Installed Hombrew"
+else
+    brew update
+    brew doctor
+    brew upgrade
+    brew install neovim
+    brew install node #dependency of coc.vim plugin
 fi
+
 
 
 
