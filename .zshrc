@@ -1,1 +1,1 @@
-
+alias vim="nvim"

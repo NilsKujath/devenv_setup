@@ -12,10 +12,11 @@ you might need to first install the xcode commandline tools (run `xcode-select -
 
 ## ToDo
 
-* automatically downloads vim-plug
+* include .vimrc and init.nvim in setup
 * automatically run :PlugInstall and :PlugUpgrade on reloaded .vimrc and .init.nvim (that might need to execute a separate file)
 * brew git and reload shell (so the version switches from Apple-Git to the homebrew git, if still necessary)
 * downlad all necessary compilers for C++ (brew)
 * automatically compare versions of programs installed by brew with version list that should be installed (to make sure there are no empty dirs); automatically install what is missing
 * brew install gh for github command line tools after git has been installed
 * make sure all brew programs are up to date
+* install firefox and add personal bookmarks (and hide those bookmarks from GitHub)

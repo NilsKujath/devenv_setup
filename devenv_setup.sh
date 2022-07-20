@@ -23,5 +23,20 @@ else
     if [ ! -d /usr/local/Cellar/node ]; then brew install node; fi #dependency of coc.vim plugin
 fi
 
+# LOAD vim-plug PLUGIN MANAGER FOR NEOVIM
+if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]; then
+    echo "Installing vim-plug for neovim:"
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+fi
+
+# LOAD vim-plug PLUGIN MANAGER FOR VIM
+if [ ! -f ~/.vim/autoload/plug.vim ]; then
+    echo "Installing vim-plug for vim:"
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
+
 # INDICATE THAT SETUP IS COMPLETE
 echo "Your development environment is set up!"
