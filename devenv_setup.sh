@@ -25,6 +25,8 @@ else
     if [ ! -d /usr/local/Cellar/node ]; then brew install node; fi  #dependency of coc.vim plugin
     if [ ! -d /usr/local/Cellar/git ]; then brew install git; fi
     if [ ! -d /usr/local/Cellar/gh ]; then brew install gh; fi      #GitHub command-line tool
+    if [ ! -d /usr/local/Cellar/wget ]; then brew install wget; fi
+    if [ ! -d /usr/local/Cellar/tree ]; then brew install tree; fi
     echo ""
 fi
 
@@ -44,4 +46,5 @@ echo "vim-plug is installed for vim and neovim!" && echo ""
 # ===== END =====
 echo "Your development environment is set up!" && echo ""
 echo "What you need to do next:"
-echo "=> open vim or nvim and run ':PlugInstall' and ':PlugUpgrade'" && echo ""
+echo "=> open vim or nvim and run ':PlugInstall' and ':PlugUpgrade'"
+echo "=> download anaconda" && echo ""
