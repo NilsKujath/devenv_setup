@@ -21,12 +21,20 @@ else
     echo "...updating Homebrew:"
     brew update
     brew upgrade
+    echo "...checking for missing packages:"
     if [ ! -d /usr/local/Cellar/neovim ]; then brew install neovim; fi
     if [ ! -d /usr/local/Cellar/node ]; then brew install node; fi  #dependency of coc.vim plugin
     if [ ! -d /usr/local/Cellar/git ]; then brew install git; fi
     if [ ! -d /usr/local/Cellar/gh ]; then brew install gh; fi      #GitHub command-line tool
     if [ ! -d /usr/local/Cellar/wget ]; then brew install wget; fi
     if [ ! -d /usr/local/Cellar/tree ]; then brew install tree; fi
+    if [ ! -d /usr/local/Cellar/gcc ]; then brew install gcc; fi
+    if [ ! -d /usr/local/Cellar/mysql ]; then
+        brew install mysql
+        mysql.server start  # required to set password for mysql server
+        mysql_secure_installation
+        mysql.server stop; fi
+    echo "All packages are installed."
     echo ""
 fi
 
