@@ -1,6 +1,7 @@
 # ===== ALIASES =====
 alias vim="nvim"
 alias tree="tree -a -I .git -L 2"
+alias mysqls="mysql -u root -p"
 
 # ===== CONDA PACKAGE MANAGER =====
 # >>> conda initialize >>>
