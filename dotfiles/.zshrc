@@ -2,6 +2,8 @@
 alias vim="nvim"
 alias tree="tree -a -I .git -L 2"
 alias mysqls="mysql -u root -p"
+alias mysqlstart="mysql.server start"
+alias mysqlstop="mysql.server stop"
 
 # ===== CONDA PACKAGE MANAGER =====
 # >>> conda initialize >>>
