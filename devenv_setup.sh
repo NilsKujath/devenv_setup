@@ -8,6 +8,7 @@ cp ./dotfiles/.zshrc ~/ && echo "...added config file for zsh shell."
 cp ./dotfiles/.gitconfig ~/ && echo "...added config file for global Git settings."
 cp ./dotfiles/.vimrc ~/ && echo "...added config file for vim."
 cp ./dotfiles/init.vim ~/.config/nvim/ && echo "...added config file for neovim."
+cp ./dotfiles/.gitignore_global ~/ && echo "...added global gitignore settings." 
 echo "All your custom config files have been added!" && echo ""
 
 echo "=============================================================="
