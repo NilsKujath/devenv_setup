@@ -1,27 +1,26 @@
 #!/bin/zsh
 echo ""
 
-# ===== CONFIG FILES =====
-echo "Adding your custum config files and overwriting existing ones:" && echo ""
+echo "=============================================================="
+echo "Adding your custum config files and overwriting existing ones:"
+echo "==============================================================" && echo ""
 cp ./dotfiles/.zshrc ~/ && echo "...added config file for zsh shell."
 cp ./dotfiles/.gitconfig ~/ && echo "...added config file for global Git settings."
 cp ./dotfiles/.vimrc ~/ && echo "...added config file for vim."
 cp ./dotfiles/init.vim ~/.config/nvim/ && echo "...added config file for neovim."
-echo "" && echo "All your custom config files have been added!" && echo ""
+echo "All your custom config files have been added!" && echo ""
 
-# ===== PACKAGE MANAGERS =====
-echo "Checking for Homebrew:"
-if ! command -v brew &> /dev/null
-then
+echo "=============================================================="
+echo "Checking Homebrew (package manager) and managing packages:"
+echo "==============================================================" && echo ""
+if ! command -v brew &> /dev/null; then
     rm -r /usr/local/*
-    echo "...Homebrew is not installed. Initiating installation:"
+    echo "...Homebrew (package manager) is not installed. Initiating installation:"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo "Successfully Installed Hombrew" & echo ""
+    echo "Successfully installed Homebrew (package manager)." & echo ""
 else
-    echo "...updating Homebrew:"
-    brew update
-    brew upgrade
-    echo "...checking for missing packages:"
+    echo "...updating Homebrew (package manager)." && brew update
+    echo "...checking for missing packages." && brew upgrade
     if [ ! -d /usr/local/Cellar/neovim ]; then brew install neovim; fi
     if [ ! -d /usr/local/Cellar/node ]; then brew install node; fi  #dependency of coc.vim plugin
     if [ ! -d /usr/local/Cellar/git ]; then brew install git; fi
@@ -29,31 +28,36 @@ else
     if [ ! -d /usr/local/Cellar/wget ]; then brew install wget; fi
     if [ ! -d /usr/local/Cellar/tree ]; then brew install tree; fi
     if [ ! -d /usr/local/Cellar/gcc ]; then brew install gcc; fi
+    if [ ! -d /usr/local/Caskroom/mactex ]; then brew install --cask mactex; fi
+    if [ ! -d /usr/local/Caskroom/texstudio ]; then brew install --cask texstudio; fi
     if [ ! -d /usr/local/Cellar/mysql ]; then
         brew install mysql
         mysql.server start  # required to set password for mysql server
         mysql_secure_installation
         mysql.server stop; fi
-    echo "All packages are installed."
-    echo ""
+    brew cleanup && echo "...removing unused and uninstalled files."
+    echo "All necessary packages are installed!" && echo ""
 fi
 
-echo "Checking for vim-plug:"
+echo "=============================================================="
+echo "Setting up vim-plug (plugin manager for vim and neovim):"
+echo "==============================================================" && echo ""
 if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]; then
     echo "...installing vim-plug for neovim:"
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-fi
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'; fi
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
     echo "...installing vim-plug for vim:"
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; fi
 echo "vim-plug is installed for vim and neovim!" && echo ""
 
-# ===== END =====
-echo "Your development environment is set up!" && echo ""
-echo "What you need to do next:"
-echo "=> open vim or nvim and run ':PlugInstall' and ':PlugUpgrade'"
-echo "=> download anaconda"
-echo "=> run 'source ~/.zshrc'" && echo ""
+echo "" && echo ""
+echo "WARNING: The following steps need to be executed manually:"
+echo "    * open vim/nvim and run ':PlugInstall' and ':PlugUpgrade'"
+echo "    * download anaconda"
+echo "    * set up texstudio"
+echo "    * install firefox, set as default, import bookmarks"
+echo "    * run 'source ~/.zshrc'"
+echo "    * install latex dotfiles"
+echo "    * install updates and upgrade MacOS" && echo "" && echo "" && echo "" 
