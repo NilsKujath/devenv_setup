@@ -9,6 +9,7 @@ cp ./dotfiles/.gitconfig ~/ && echo "...added config file for global Git setting
 cp ./dotfiles/.vimrc ~/ && echo "...added config file for vim."
 cp ./dotfiles/init.vim ~/.config/nvim/ && echo "...added config file for neovim."
 cp ./dotfiles/.gitignore_global ~/ && echo "...added global gitignore settings." 
+cp ./dotfiles/texstudio.ini ~/.config/texstudio/ && echo "...added config file for texstudio."
 echo "All your custom config files have been added!" && echo ""
 
 echo "=============================================================="
@@ -32,6 +33,7 @@ else
     if [ ! -d /usr/local/Caskroom/firefox ]; then brew install --cask firefox; fi
     if [ ! -d /usr/local/Caskroom/mactex ]; then brew install --cask mactex; fi
     if [ ! -d /usr/local/Caskroom/texstudio ]; then brew install --cask texstudio; fi
+    if [ ! -d /usr/local/Caskroom/flux ]; then brew install --cask flux && open /Applications/Flux.app; fi
     if [ ! -d /usr/local/Cellar/mysql ]; then
         brew install mysql
         mysql.server start  # required to set password for mysql server
