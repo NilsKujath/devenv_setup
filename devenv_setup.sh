@@ -28,6 +28,7 @@ else
     if [ ! -d /usr/local/Cellar/wget ]; then brew install wget; fi
     if [ ! -d /usr/local/Cellar/tree ]; then brew install tree; fi
     if [ ! -d /usr/local/Cellar/gcc ]; then brew install gcc; fi
+    if [ ! -d /usr/local/Caskroom/firefox ]; then brew install --cask firefox; fi
     if [ ! -d /usr/local/Caskroom/mactex ]; then brew install --cask mactex; fi
     if [ ! -d /usr/local/Caskroom/texstudio ]; then brew install --cask texstudio; fi
     if [ ! -d /usr/local/Cellar/mysql ]; then
@@ -55,6 +56,7 @@ echo "vim-plug is installed for vim and neovim!" && echo ""
 echo "" && echo ""
 echo "WARNING: The following steps need to be executed manually:"
 echo "    * open vim/nvim and run ':PlugInstall' and ':PlugUpgrade'"
+echo "    * manually install mactex.pkg from Caskroom"
 echo "    * download anaconda"
 echo "    * set up texstudio"
 echo "    * install firefox, set as default, import bookmarks"

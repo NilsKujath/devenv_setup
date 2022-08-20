@@ -5,6 +5,7 @@
 	email = 63961429+NilsKujath@users.noreply.github.com
 [core]
 	editor = vim
+	excludesfile = /Users/nilskujath/.gitignore_global
 [init]
 	defaultBranch = master
 [alias]
