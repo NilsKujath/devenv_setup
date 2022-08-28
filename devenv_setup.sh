@@ -43,35 +43,37 @@ cp ./dotfiles/texstudio.ini ~/.config/texstudio/ && echo "...added config file f
 echo "All your custom config files have been added!" && echo ""
 
 echo "=============================================================="
-echo "Checking Homebrew (package manager) and managing packages:"
+echo "Checking Homebrew (package manager):"
 echo "==============================================================" && echo ""
 if ! command -v brew &> /dev/null; then
     rm -r /usr/local/*
     echo "...Homebrew (package manager) is not installed; initiating installation:"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo "Successfully installed Homebrew (package manager)." & echo ""
-else
-    echo "...updating Homebrew (package manager)" && brew update
-    echo "...checking for missing packages" && brew upgrade
-    if [ ! -d /usr/local/Cellar/neovim ]; then brew install neovim; fi
-    if [ ! -d /usr/local/Cellar/node ]; then brew install node; fi  #dependency of coc.vim plugin
-    if [ ! -d /usr/local/Cellar/git ]; then brew install git; fi
-    if [ ! -d /usr/local/Cellar/gh ]; then brew install gh; fi      #GitHub command-line tool
-    if [ ! -d /usr/local/Cellar/wget ]; then brew install wget; fi
-    if [ ! -d /usr/local/Cellar/tree ]; then brew install tree; fi
-    if [ ! -d /usr/local/Cellar/gcc ]; then brew install gcc; fi
-    if [ ! -d /usr/local/Caskroom/firefox ]; then brew install --cask firefox; fi
-    if [ ! -d /usr/local/Caskroom/mactex ]; then brew install --cask mactex; fi
-    if [ ! -d /usr/local/Caskroom/texstudio ]; then brew install --cask texstudio; fi
-    if [ ! -d /usr/local/Caskroom/flux ]; then brew install --cask flux && open /Applications/Flux.app; fi
-    if [ ! -d /usr/local/Cellar/mysql ]; then
-        brew install mysql
-        mysql.server start  # required to set password for mysql server
-        mysql_secure_installation
-        mysql.server stop; fi
-    brew cleanup && echo "...removing unused and uninstalled files"
-    echo "All necessary packages are installed!" && echo ""
-fi
+    echo "Successfully installed Homebrew (package manager)." & echo ""; fi
+
+echo "==================================================="
+echo "Installing missing software and their dependencies:"
+echo "===================================================" && echo ""
+echo "...updating Homebrew (package manager)" && brew update
+echo "...checking for missing packages" && brew upgrade
+if [ ! -d /usr/local/Cellar/neovim ]; then brew install neovim; fi
+if [ ! -d /usr/local/Cellar/node ]; then brew install node; fi  #dependency of coc.vim plugin
+if [ ! -d /usr/local/Cellar/git ]; then brew install git; fi
+if [ ! -d /usr/local/Cellar/gh ]; then brew install gh; fi      #GitHub command-line tool
+if [ ! -d /usr/local/Cellar/wget ]; then brew install wget; fi
+if [ ! -d /usr/local/Cellar/tree ]; then brew install tree; fi
+if [ ! -d /usr/local/Cellar/gcc ]; then brew install gcc; fi
+if [ ! -d /usr/local/Caskroom/firefox ]; then brew install --cask firefox; fi
+if [ ! -d /usr/local/Caskroom/mactex ]; then brew install --cask mactex; fi
+if [ ! -d /usr/local/Caskroom/texstudio ]; then brew install --cask texstudio; fi
+if [ ! -d /usr/local/Caskroom/flux ]; then brew install --cask flux && open /Applications/Flux.app; fi
+if [ ! -d /usr/local/Cellar/mysql ]; then
+    brew install mysql
+    mysql.server start  # required to set password for mysql server
+    mysql_secure_installation
+    mysql.server stop; fi
+brew cleanup && echo "...removing unused and uninstalled files"
+echo "All necessary packages are installed!" && echo ""
 
 echo "=============================================================="
 echo "Setting up vim-plug (plugin manager for vim and neovim):"
@@ -91,8 +93,7 @@ echo "WARNING: The following steps need to be executed manually:"
 echo "    * open vim/nvim and run ':PlugInstall' and ':PlugUpgrade'"
 echo "    * manually install mactex.pkg from Caskroom"
 echo "    * download anaconda"
-echo "    * set up texstudio"
-echo "    * install firefox, set as default, import bookmarks"
+echo "    * set firefox as default, import bookmarks"
 echo "    * run 'source ~/.zshrc'"
 echo "    * install latex dotfiles"
 echo "    * install updates and upgrade MacOS" && echo "" && echo "" && echo "" 
