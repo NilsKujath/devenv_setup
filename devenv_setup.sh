@@ -34,6 +34,9 @@ echo ""
 echo "=============================================================="
 echo "Adding your custum config files and overwriting existing ones:"
 echo "==============================================================" && echo ""
+if [ ! -d ~/.config ]; then mkdir ~/.config; fi
+if [ ! -d ~/.config/nvim ]; then mkdir ~/.config/nvim; fi
+if [ ! -d ~/.config/texstudio ]; then mkdir ~/.config/texstudio; fi
 cp ./dotfiles/.zshrc ~/ && echo "...added config file for zsh shell"
 cp ./dotfiles/.gitconfig ~/ && echo "...added config file for global Git settings"
 cp ./dotfiles/.vimrc ~/ && echo "...added config file for vim"
