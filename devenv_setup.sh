@@ -31,6 +31,11 @@
 #!/bin/zsh
 echo ""
 
+echo "==================================="
+echo "Installing Xcode Comand Line Tools:"
+echo "===================================" && echo ""
+xcode-select --install
+
 echo "=============================================================="
 echo "Adding your custum config files and overwriting existing ones:"
 echo "==============================================================" && echo ""
@@ -98,5 +103,6 @@ echo "    * manually install mactex.pkg from Caskroom"
 echo "    * download anaconda"
 echo "    * set firefox as default, import bookmarks"
 echo "    * run 'source ~/.zshrc'"
-echo "    * install latex dotfiles"
+echo "    * intall uBlockOrigin AddOn for Firefox"
+echo "    * run gh auth login"
 echo "    * install updates and upgrade MacOS" && echo "" && echo "" && echo "" 
